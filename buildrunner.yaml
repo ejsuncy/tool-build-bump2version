@@ -1,0 +1,29 @@
+steps:
+  build:
+    build: .
+    push:
+      repository: ghcr.io/ejsuncy/tool-build-bump2version
+      tags:
+        - 0.0.1
+
+  bump-version:
+    run:
+      image: ghcr.io/ejsuncy/tool-build-bump2version:0.0.1
+      files:
+        ./: "/bump:rw"
+      cwd: /bump
+      cmds:
+        - bump2version ${BUMP_TYPE}
+      env:
+        BUMP_TYPE: {{ BUILDRUNNER_BUMP_TYPE }}
+
+  list-version:
+    run:
+      image: ghcr.io/ejsuncy/tool-build-bump2version:0.0.1
+      files:
+        ./: "/bump:rw"
+      cwd: /bump
+      cmds:
+        - bump2version --dry-run --list patch | grep current_version | sed -r s,"^.*=",, > /source/version.txt
+      artifacts:
+        "/source/version.txt":
