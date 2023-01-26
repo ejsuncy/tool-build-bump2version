@@ -1,6 +1,6 @@
 # tool-build-bump2version
 
-![Version: 0.1.0a](https://img.shields.io/badge/Version-0.1.0a-informational?style=flat)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat)
 
 Installs [bump2version](https://github.com/c4urself/bump2version) in a python3-alpine image
 
@@ -17,7 +17,7 @@ To use this image, just mount the root directory at `/bump` with RW permissions:
 ```shell
 docker run \
   --mount type=bind,src="$(pwd)",dst=/bump \
-  -it ghcr.io/ejsuncy/tool-build-bump2version:0.1.0a \
+  -it ghcr.io/ejsuncy/tool-build-bump2version:0.1.0 \
   bump2version patch
 ```
 
