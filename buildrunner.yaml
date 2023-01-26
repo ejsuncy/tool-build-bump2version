@@ -4,11 +4,11 @@ steps:
     push:
       repository: ghcr.io/ejsuncy/tool-build-bump2version
       tags:
-        - 0.1.0a
+        - 0.1.0
 
   bump-version:
     run:
-      image: ghcr.io/ejsuncy/tool-build-bump2version:0.1.0a
+      image: ghcr.io/ejsuncy/tool-build-bump2version:0.1.0
       files:
         ./: "/bump:rw"
       cwd: /bump
@@ -19,7 +19,7 @@ steps:
 
   list-version:
     run:
-      image: ghcr.io/ejsuncy/tool-build-bump2version:0.1.0a
+      image: ghcr.io/ejsuncy/tool-build-bump2version:0.1.0
       files:
         ./: "/bump:rw"
       cwd: /bump
